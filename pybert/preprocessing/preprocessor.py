@@ -201,5 +201,4 @@ class EnglishPreProcessor(object):
         x = self.remove_breaks(x)
         x = self.remove_ip(x)
         x = self.adjust_common(x)
-        x = self.remove_chinese(x)
         return x

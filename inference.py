@@ -64,18 +64,15 @@ def main():
     predicter = Predicter(model = model,
                          logger = logger,
                          n_gpu=config['train']['n_gpu'],
-                         model_path = 'pybert/output/epoch_1.pth'
+                         model_path = config['output']['checkpoint_dir'] / f"best_{config['model']['arch']}_model.pth"
                          )
     
-    # predict
+    # predict results
     result = predicter.predict(data = test_loader)
-    print(len(result), len(targets))
-    print(type(result))
     result = np.where(result > 0.5, 1, 0)  
-    print(result, targets)
     print('accuracy score', accuracy_score(targets, result))
-    print('F1 score', f1_score(targets, result))
-    print('classification report', classification_report(targets, result))
+    print('\nF1 score', f1_score(targets, result))
+    print('\nclassification report', classification_report(targets, result))
 
     
     

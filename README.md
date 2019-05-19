@@ -24,6 +24,8 @@ deactivate `source deactivate`
 4. Run `train_bert_humor.py` to train the humor detector model.
 5. You can also use `inference.py` to evaluate the models with finetuned models.
 
+## Run model on google colab
+You can also run the model directly using `bert_humor.ipynb` notebook using google colab. But you should first downlaod the [pretrained BERT model](https://storage.googleapis.com/bert_models/2018_10_18/uncased_L-12_H-768_A-12.zip) and save it to `pybert/model/pretrain/` before running the model. 
 
 ## Data preparation
 
@@ -62,7 +64,7 @@ The results on the 2 datasets are as follows:
 ## References
 1. [BERT paper](https://arxiv.org/abs/1810.04805)
 2. Hugging face's pretrained pytorch models: [pytorch-pretrained-BERT](https://github.com/huggingface/pytorch-pretrained-BERT)
-3. pytorch multi-label classification for [jigsaw toxic comment classification](https://github.com/lonePatient/Bert-Multi-Label-Text-Classification)
+3. [pytorch multi-label classification](https://github.com/lonePatient/Bert-Multi-Label-Text-Classification) for jigsaw toxic comment classification
 
 ## Conclusion
 Thanks Qordoba for sending the humor detector challenge and providing the ideas to start with!! :smiley: :smiley:

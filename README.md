@@ -1,11 +1,8 @@
 # Humor detector using Bert
+In this repo, we show how to setup and run a humor detector model using BERT.
 
 
-#### Objective
-To built a humor detector. In simple words parse a sentece to a model, we have to identify whether it is humorous or not!!
-
-
-## Setup
+## Setup environment
 
 This model requires PyTorch 1.0 or later. We recommend running the code in a virtual environment with Python 3.6:
 ```
@@ -17,34 +14,59 @@ pip3 install -r requirements.txt
 deactivate `source deactivate`
 
 
-#### Metrics 
-The most elegant way or most proficient way is to identify the humor content in the sentence. Maybe if we can quantify the humor 
-like the sentence is 60% humorous would be super cool. However we need proper language experts to label these senteces and opinions 
-may vary! So let's consider the problem to be a classification problem. So lets consider accuracy, precision, recall and F1 scores as 
-evaluation metrics.
+## Steps to run the model
 
-#### Data collection
-Now first task is to collect the data. We do not really have proper training data. However after reading this paper
-([Humor recognition using deep learning](https://www.aclweb.org/anthology/N18-2018)) provided in the exercise
-and from the datasets sent in the exercise , I have got some fair idea about data preparation.
-So I collected data from 16000 one liners, [short jokes dataset](https://www.kaggle.com/abhinavmoudgil95/short-jokes) and 
-[News Headlines Dataset For Sarcasm Detection](https://www.kaggle.com/rmisra/news-headlines-dataset-for-sarcasm-detection). 
-Also to make the negative sample distribution proportional, I collected new headlines from [WMT](http://www.statmt.org/wmt16/translation-task.html) 
-as suggested in paper. I want to collect more data and see how it works. However my first task is to build a simple baseline model and
-make it work. I would like to improve on it later.
+**GPU with minimum 16GB RAM is required to run the model ** 
 
-#### Building baseline model
+1. Clone this repo and setup the virtual environment.
+2. Downlaod the [pretrained BERT model](https://storage.googleapis.com/bert_models/2018_10_18/uncased_L-12_H-768_A-12.zip) and store it to `pybert/model/pretrain/`.
+3. As google provides models pretrained on tensorflow, run `convert_tf_checkpoint_to_pytorch.py` to make the pretrained weights compatible with Pytorch.
+4. Run `train_bert_humor.py` to train the humor detector model.
+5. You can also use `inference.py` to evaluate the models with finetuned models.
 
-1. Prepare the data set for humor.
-2. Pretrain the model on `Bert`
-3. Use semi-supervised learning and transfer learning to train `Bert` on humor dataset(thanks to the article sent on using [semi-supervised learning and transfer learning(https://towardsdatascience.com/a-technique-for-building-nlp-classifiers-efficiently-with-transfer-learning-and-weak-supervision-a8e2f21ca9c8)).
-4. Fine tune the model on our huor detector task and evaluate the model.
 
-#### Tasks
+## Data preparation
 
-- [x] Prepare dataset
-- [x] Get accustomed with google colab - Trained simple bert model on some random classification task.
-- [x] Build a crude model using Bert which can be served as a baseline model.
-- [x] Evaluate the baseline model and use one shot learning to see where it goes.
-- [ ] Improve the baseline model and explore semi-supervised learning!
+We used 2 datasets to train the model which are availabe in `data` folder.
+1. Sarcasm data used in this repo is directly collected from [News Headlines Dataset For Sarcasm Detection](https://www.kaggle.com/rmisra/news-headlines-dataset-for-sarcasm-detection).
+2. humor data is prepared from a couple of sources like [Short jokes dataset](https://www.kaggle.com/abhinavmoudgil95/short-jokes) and
+[kaggles all the news data](https://www.kaggle.com/snapcrack/all-the-news).
+
+You are free to use any dataset as long as it is in required format.
+
+## Fine tuning
+Fine tuning can be done according to the model requirements. One can change the parameters in `pybert/config/basic_config.py` to tune the model. 
+Some hyperparameters which are used to train this model and can be explored further are:
+```
+max_seq_len = 256
+do_lower_case = True
+batch_size = 20
+epochs = 3
+warmup_proportion = 0.1
+gradient_accumulation_steps = 1
+learning_rate = 2e-5
+weight_decay = 1e-5
+```
+
+## Results
+
+The results on the 2 datasets are as follows:
+
+| Training dataset              | Test dataset               | F1    | accuracy |
+|:-----------------------------:|:--------------------------:|:-----:|:--------:|
+| News headlines training data  | News headline test data    | 0.97  | 0.99     |
+| jokes+articles trainning data | jokes+articles test data   | 0.91  | 0.94     | 
+| jokes+articles trainning data | complete new headlines data| 0.83  | 0.85     |
+
+
+## References
+1. [BERT paper](https://arxiv.org/abs/1810.04805)
+2. Hugging face's pretrained pytorch models: [pytorch-pretrained-BERT](https://github.com/huggingface/pytorch-pretrained-BERT)
+3. pytorch multi-label classification for [jigsaw toxic comment classification](https://github.com/lonePatient/Bert-Multi-Label-Text-Classification)
+
+## Conclusion
+Thanks Qordoba for sending the humor detector challenge and providing the ideas to start with!! :smiley: :smiley:
+
+
+
 

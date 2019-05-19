@@ -37,7 +37,7 @@ configs = {
         'max_seq_len': 256,
         'do_lower_case':True,
         'batch_size': 20,#24,  # how many samples to process at once
-        'epochs': 4,  # number of epochs to train
+        'epochs': 3,  # number of epochs to train
         'start_epoch': 1,
         'warmup_proportion': 0.1,# Proportion of training to perform linear learning rate warmup for. E.g., 0.1 = 10%% of training.
         'gradient_accumulation_steps': 1,# Number of updates steps to accumulate before performing a backward/update pass.

@@ -19,7 +19,7 @@ deactivate `source deactivate`
 **GPU with minimum 16GB RAM is required to run the model ** 
 
 1. Clone this repo and setup the virtual environment.
-2. Downlaod the [pretrained BERT model](https://storage.googleapis.com/bert_models/2018_10_18/uncased_L-12_H-768_A-12.zip) and store it to `pybert/model/pretrain/` this path.
+2. Downlaod the [pretrained BERT model](https://storage.googleapis.com/bert_models/2018_10_18/uncased_L-12_H-768_A-12.zip) and store it to `pybert/model/pretrain/`.
 3. As google provides models pretrained on tensorflow, run `convert_tf_checkpoint_to_pytorch.py` to make the pretrained weights compatible with Pytorch.
 4. Run `train_bert_humor` to train the humor detector model.
 5. You can also use '`inference.py` to evaluate the models with finetuned pretrained models.

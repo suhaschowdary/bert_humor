@@ -21,16 +21,16 @@ deactivate `source deactivate`
 1. Clone this repo and setup the virtual environment.
 2. Downlaod the [pretrained BERT model](https://storage.googleapis.com/bert_models/2018_10_18/uncased_L-12_H-768_A-12.zip) and store it to `pybert/model/pretrain/`.
 3. As google provides models pretrained on tensorflow, run `convert_tf_checkpoint_to_pytorch.py` to make the pretrained weights compatible with Pytorch.
-4. Run `train_bert_humor` to train the humor detector model.
-5. You can also use '`inference.py` to evaluate the models with finetuned pretrained models.
+4. Run `train_bert_humor.py` to train the humor detector model.
+5. You can also use `inference.py` to evaluate the models with finetuned models.
 
 
 ## Data preparation
 
 We used 2 datasets to train the model which are availabe in `data` folder.
-1. Sarcasm data used in this repo is directly collected from [News Headlines Dataset For Sarcasm Detection]("https://www.kaggle.com/rmisra/news-headlines-dataset-for-sarcasm-detection").
-2. humor data is prepared from a couple of sources like [Short jokes dataset]("https://www.kaggle.com/abhinavmoudgil95/short-jokes") and
-[kaggles all the news data]("https://www.kaggle.com/snapcrack/all-the-news").
+1. Sarcasm data used in this repo is directly collected from [News Headlines Dataset For Sarcasm Detection](https://www.kaggle.com/rmisra/news-headlines-dataset-for-sarcasm-detection).
+2. humor data is prepared from a couple of sources like [Short jokes dataset](https://www.kaggle.com/abhinavmoudgil95/short-jokes) and
+[kaggles all the news data](https://www.kaggle.com/snapcrack/all-the-news).
 
 You are free to use any dataset as long as it is in required format.
 
@@ -65,7 +65,7 @@ The results on the 2 datasets are as follows:
 3. pytorch multi-label classification for [jigsaw toxic comment classification](https://github.com/lonePatient/Bert-Multi-Label-Text-Classification)
 
 ## Conclusion
-Thanks Qordoba for sending the humor detector challenge and providing the ideas to start with!! :D
+Thanks Qordoba for sending the humor detector challenge and providing the ideas to start with!! :smiley: :smiley:
 
 
 

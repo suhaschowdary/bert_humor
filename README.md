@@ -66,9 +66,6 @@ The results on the 2 datasets are as follows:
 2. Hugging face's pretrained pytorch models: [pytorch-pretrained-BERT](https://github.com/huggingface/pytorch-pretrained-BERT)
 3. [pytorch multi-label classification](https://github.com/lonePatient/Bert-Multi-Label-Text-Classification) for jigsaw toxic comment classification
 
-## Conclusion
-Thanks Qordoba for sending the humor detector challenge and providing the ideas to start with!! :smiley: :smiley:
-
 
 
 

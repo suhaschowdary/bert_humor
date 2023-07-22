@@ -1,4 +1,4 @@
-torch==1.0.0
+torch==1.13.1
 torchvision==0.2.2
 pytorch-pretrained-bert==0.6.2
 scikit-learn==0.20.2
